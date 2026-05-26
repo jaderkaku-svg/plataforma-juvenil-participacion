@@ -4,6 +4,22 @@ Este repositorio será utilizado para construir progresivamente un proyecto peda
 
 ## Advertencia
 
+Nombre del estudiante: Jader Caicedo Cuesta
+
+Nombre de la plataforma:
+Plataforma juvenil de participacion 
+
+Proposito:
+aprender como la tecnologia puede apoyar ejercicios pedagogicos de participacion juvenil transparencia y trazabilidad 
+
+Reglas de cuidado:
+-No usar datos reales
+-No usar cedula
+-No usar nombres de ciudadanos reales
+-No presentar resultados como oficiales
+##importancia de git 
+git nos permite registar cambios del proyecto y revisar que se modifico en cada momento 
+
 Este proyecto es únicamente académico.
 
 No corresponde a una elección real.

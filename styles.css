@@ -1,0 +1,364 @@
+/* ========================================
+   ESTILOS CSS - Plataforma Juvenil
+   Aprende CSS paso a paso con comentarios
+   ======================================== */
+
+/* 
+   :root es un selector especial que define VARIABLES GLOBALES
+   Las variables empiezan con -- y se usan con var(--nombre)
+   Esto permite reutilizar colores sin escribirlos una y otra vez
+*/
+:root {
+  /* Los colores en hexadecimal (#) usan 6 caracteres: #RRGGBB */
+  --color-primario: #6366f1;      /* Púrpura: RGB (99, 102, 241) */
+  --color-secundario: #8b5cf6;    /* Púrpura oscuro: RGB (139, 92, 246) */
+  --color-acento: #ec4899;        /* Rosa: RGB (236, 72, 153) */
+  --color-fondo: #f8f9fa;         /* Gris muy claro: RGB (248, 249, 250) */
+  --color-texto: #1f2937;         /* Gris oscuro: RGB (31, 41, 55) */
+  
+  /* 
+     box-shadow: desplazamiento-x desplazamiento-y desenfoque color-opacidad
+     rgba(0,0,0,0.1) = Negro con 10% de opacidad (transparencia)
+  */
+  --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* 
+     transition: propiedad duración función-timing
+     Esto hace animaciones suaves cuando cambian propiedades
+  */
+  --transicion: all 0.3s ease;    /* Todos los cambios en 0.3 segundos */
+}
+
+
+/* ========================================
+   ESTILOS GLOBALES (Aplican a TODA la página)
+   ======================================== */
+
+/*
+   * es el selector UNIVERSAL - selecciona TODOS los elementos
+   Se usa para resetear estilos por defecto del navegador
+*/
+* {
+  /* margin: espacio FUERA del elemento (entre elementos) */
+  margin: 0;
+  
+  /* padding: espacio DENTRO del elemento (alrededor del contenido) */
+  padding: 0;
+  
+  /* 
+     box-sizing: border-box hace que el padding y border
+     se cuenten EN el ancho/alto total (no se agregan extra)
+  */
+  box-sizing: border-box;
+}
+
+/*
+   body: el contenedor principal de TODO el contenido
+*/
+body {
+  /* 
+     font-family: define la fuente de texto
+     Tiene varias opciones (serif, sans-serif, monospace)
+     Si la primera no existe, usa la siguiente
+  */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* 
+     background: linear-gradient(dirección, color1, color2)
+     Crea un gradiente de colores suave
+     135deg = diagonal de arriba-izquierda a abajo-derecha
+  */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  
+  /* 
+     min-height: 100vh = altura mínima de la pantalla
+     vh = viewport height (altura visible del navegador)
+     Así el fondo llena toda la pantalla
+  */
+  min-height: 100vh;
+  
+  /* padding: espacio alrededor del contenido */
+  padding: 30px 20px;
+  
+  /* line-height: espacio entre líneas de texto */
+  line-height: 1.6;
+  
+  /* color: color del texto (usa la variable global) */
+  color: var(--color-texto);
+}
+
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+   ======================================== */
+
+/*
+   Se aplica al body para centrar y limitar el ancho
+*/
+body {
+  /* max-width: ancho máximo que puede tener */
+  max-width: 900px;
+  
+  /* 
+     margin: 0 auto = margen arriba/abajo 0, margen izq/der auto
+     Esto CENTRA el contenedor horizontalmente en la pantalla
+  */
+  margin: 0 auto;
+}
+
+
+/* ========================================
+   ENCABEZADO - h1 (el título principal)
+   ======================================== */
+
+h1 {
+  /* 
+     background: linear-gradient crea un fondo de colores
+     Usa dos colores del :root que definimos arriba
+  */
+  background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+  
+  /* color: blanco para el texto */
+  color: white;
+  
+  /* padding: espacio dentro del h1 (arriba/abajo, izq/der) */
+  padding: 40px 30px;
+  
+  /* 
+     border-radius: redondea las esquinas
+     15px 15px 0 0 = arriba-izq, arriba-der, abajo-der, abajo-izq
+  */
+  border-radius: 15px 15px 0 0;
+  
+  /* text-align: center = centra el texto horizontalmente */
+  text-align: center;
+  
+  /* font-size: tamaño del texto (rem = relativo al tamaño por defecto) */
+  font-size: 2.5rem;
+  
+  /* 
+     text-shadow: desplazamiento-x desplazamiento-y desenfoque color
+     Crea una sombra detrás del texto (efecto profundidad)
+  */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  
+  /* letter-spacing: espacio entre letras */
+  letter-spacing: 1px;
+  
+  /* margin-bottom: 0 = sin espacio debajo */
+  margin-bottom: 0;
+  
+  /* 
+     border-bottom: ancho estilo color
+     Línea debajo de 5px con el color de acento
+  */
+  border-bottom: 5px solid var(--color-acento);
+}
+
+
+/* ========================================
+   PÁRRAFOS Y CONTENIDO (etiquetas <p>)
+   ======================================== */
+
+p {
+  /* Fondo blanco para el texto */
+  background: white;
+  
+  /* Espacio dentro del párrafo */
+  padding: 20px 30px;
+  
+  /* Sin espacio debajo (lo usaremos después) */
+  margin-bottom: 0;
+  
+  /* Tamaño del texto un poco más grande */
+  font-size: 1.05rem;
+  
+  /* Espacio entre líneas para mejor legibilidad */
+  line-height: 1.8;
+  
+  /* Color gris para el texto */
+  color: #555;
+}
+
+/*
+   p:last-of-type selecciona el ÚLTIMO <p> de su contenedor
+   Esto es útil para aplicar estilos solo al final
+*/
+p:last-of-type {
+  /* 
+     border-radius con 4 valores: arriba-izq, arriba-der, abajo-der, abajo-izq
+     0 0 15px 15px = esquinas inferiores redondeadas
+  */
+  border-radius: 0 0 15px 15px;
+  
+  /* Espacio debajo del último párrafo */
+  margin-bottom: 30px;
+  
+  /* 
+     box-shadow: sombra alrededor del elemento
+     desplazamiento-x desplazamiento-y desenfoque color
+  */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ========================================
+   TÍTULOS SECUNDARIOS - h2
+   ======================================== */
+
+h2 {
+  /* Fondo blanco */
+  background: white;
+  
+  /* Usa el color púrpura del :root */
+  color: var(--color-primario);
+  
+  /* Tamaño grande para subtítulos */
+  font-size: 1.8rem;
+  
+  /* Márgenes: arriba 30px, abajo 0 */
+  margin: 30px 0 0 0;
+  
+  /* Espacio dentro */
+  padding: 25px 30px 15px 30px;
+  
+  /* 
+     border-left: línea del lado izquierdo
+     5px ancho, sólida, color rosa de acento
+  */
+  border-left: 5px solid var(--color-acento);
+  
+  /* Esquinas redondeadas solo arriba */
+  border-radius: 10px 10px 0 0;
+  
+  /* Sombra debajo del elemento */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  
+  /* Línea debajo con gris claro */
+  border-bottom: 2px solid var(--color-fondo);
+}
+
+
+/* ========================================
+   RESPONSIVE DESIGN - Para celulares y tablets
+   ======================================== */
+
+/*
+   @media (max-width: 768px) = SI la pantalla tiene 768px o MENOS
+   Los estilos aquí solo se aplican en pantallas pequeñas
+   768px = aproximadamente el ancho de una tablet
+*/
+@media (max-width: 768px) {
+  /* Menos espacio en pantallas pequeñas */
+  body {
+    padding: 15px 10px;
+  }
+
+  /* Tamaño más pequeño del título en celulares */
+  h1 {
+    font-size: 1.8rem;
+    padding: 25px 20px;
+  }
+
+  /* Menos padding en párrafos */
+  p {
+    padding: 15px 20px;
+    font-size: 1rem;
+  }
+
+  /* h2 también se adapta */
+  h2 {
+    font-size: 1.4rem;
+    padding: 20px 20px 12px 20px;
+  }
+}
+
+
+/* ========================================
+   ANIMACIONES - Efectos de movimiento
+   ======================================== */
+
+/*
+   @keyframes: define una animación personalizada
+   fadeIn = nombre de la animación (lo inventamos)
+   Los porcentajes (from/to) son estados de la animación
+*/
+@keyframes fadeIn {
+  /* Estado INICIAL: invisible y abajo */
+  from {
+    /* opacity: 0 = completamente transparente (invisible) */
+    opacity: 0;
+    
+    /* transform: translateY mueve el elemento hacia arriba/abajo */
+    transform: translateY(10px);
+  }
+  
+  /* Estado FINAL: visible y en su lugar */
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+   animation: nombre duración función-timing
+   Aplica la animación fadeIn a todos los elementos
+*/
+h1, h2, p {
+  /* 
+     fadeIn = nombre de la animación
+     0.5s = duración de 0.5 segundos
+     ease-out = empieza rápido, termina lento
+  */
+  animation: fadeIn 0.5s ease-out;
+}
+
+
+/* ========================================
+   HOVER EFFECTS - Efectos al pasar el ratón
+   ======================================== */
+
+/*
+   h2: selecciona todos los títulos h2
+   Agrega transition para suavizar cambios
+*/
+h2 {
+  /* 
+     transition: propiedad duración función
+     Anima todos los cambios suavemente en 0.3 segundos
+  */
+  transition: var(--transicion);
+  
+  /* cursor: pointer = el cursor se convierte en "manita" */
+  cursor: pointer;
+}
+
+/*
+   h2:hover = cuando pasas el ratón SOBRE un h2
+   Los estilos aquí solo se aplican en ese momento
+*/
+h2:hover {
+  /* 
+     transform: translateX mueve el elemento hacia izq/der
+     Valores positivos = hacia la derecha
+  */
+  transform: translateX(5px);
+  
+  /* Sombra más grande cuando pasas el ratón */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  
+  /* El border izquierdo cambia al color primario */
+  border-left-color: var(--color-primario);
+}
+
+/*
+   p:hover = cuando pasas el ratón sobre párrafos
+   También agranda la sombra
+*/
+p:hover {
+  /* Animación suave para los cambios */
+  transition: var(--transicion);
+  
+  /* Sombra más grande y oscura */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
